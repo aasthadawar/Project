@@ -1,0 +1,11 @@
+.CountryImage{
+    height:30px;
+    width:10%;
+}
+
+.Country{
+    border: 1px solid black;
+    margin:10px;
+    display: inline-block;
+    width:30%
+}

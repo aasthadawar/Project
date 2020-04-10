@@ -1,0 +1,4 @@
+.Countries{
+    display: flex;
+    flex-direction: column;
+}
