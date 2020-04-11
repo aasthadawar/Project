@@ -10,14 +10,15 @@ const initialState = {
 const CountriesReducer=(state=initialState,action)=>{
     switch(action.type){
         case actionTypes.COUNTRIES_DETAILS:
-            console.log('country',state.countries);
-            let details=action.details;
+            //console.log('country',state.countries);
             var updatedArray=[];
-            updatedArray=state.countries.concat(details);
-            console.log('updated',updatedArray);
+            var countryArray=[];
+            let details=action.details;
+             countryArray=updatedArray.concat(details);
+            //console.log('updated',updatedArray);
             return{
                 ...state,
-                countries:updatedArray
+                countries:countryArray
                 
             }
         

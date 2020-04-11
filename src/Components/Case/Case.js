@@ -4,7 +4,8 @@ import styles from '../Case/Case.module.css'
 import Arrow from '../UI/Arrow/Arrow';
 
 const Case =(props)=>{
-    let caseLabels = '';
+  
+        let caseLabels = '';
     switch(props.label){
         case 'total':
             caseLabels=(
@@ -28,6 +29,7 @@ const Case =(props)=>{
             break;   
 
     }
+    
     return(
         <div>
                 <h3>{caseLabels}</h3>

@@ -3,33 +3,84 @@ import {connect} from 'react-redux';
 import { initCountriesDetails } from '../../store/Actions/CountriesActions';
 import Country from '../../Components/Country/Country';
 import styles from '../Countries/Countries.module.css';
-import SearchBar from '../../Components/UI/SearchBar/SearchBar';
+import axios from 'axios';
 
 class Countries extends PureComponent{
     constructor(){
         super();
-        this.country=[]
+        this.country=[];
+        this.state={
+            filterArray:[],
+            countryArray:[]
+        }
     }
     componentDidMount(){
         this.props.onShowCountriesDetails();
     }
 
+    UNSAFE_componentWillMount(){
+        axios.get('https://corona-virus-stats.herokuapp.com/api/v1/cases/countries-search')
+        .then(response=>{
+            var countryData = response.data.data.rows;
+            var updatedArray = this.state.countryArray.concat(countryData);
+            this.setState({...this.state,countryArray:updatedArray})
+        })
+        .catch(error=>{
+            console.log('error is',error)
+        })
+    }
+
+    onSearchHandler=(event)=>{
+            var value=event.target.value;
+            //console.log('value',value);
+            var formattedValue = value.toLowerCase();
+           // console.log('formatted value',formattedValue);
+            //console.log('change country',this.country);
+            var arr = this.country.filter(items=>items.country.toLowerCase().includes(formattedValue))
+            //console.log('filter array',this.filterArray)
+            this.setState({...this.state,...this.state.filterArray,filterArray:arr})
+    }
+
     render(){
-       if(this.props.countriesData.length!=0){
-            console.log('countries data',this.props.countriesData);
-            this.country=this.props.countriesData
-            console.log('array',this.country);
+       if(this.state.countryArray.length!=0){
+          this.country=[]
+           if(this.props.countriesData.length!=0){
+               this.country=[]
+               
+               this.country=this.props.countriesData;
+           }
+
+           else{
+               
+            this.country=this.state.countryArray;
+           }
             
-            var search=<SearchBar/>
+            var search=(
+                <div className={styles.Search}>
+                    <div className={styles.Icon}><input onChange={()=>this.onSearchHandler(window.event)} type="text" placeholder="search locarion "></input></div>
+                </div>
+            )
+            var counter=0;
 
-
-           var countryData = (
+            if(this.state.filterArray.length==0){
+                var countryData = (
         
-            this.country.map(items=>{
-                return(
-                 <Country key={items.country} name={items.country} url={items.flag} recovered={items.total_recovered} active={items.active_cases}/>
-                );
-            }))
+                    this.country.map(items=>{
+                        counter++;
+                        return(
+                         <Country key={counter} name={items.country} url={items.flag} recovered={items.total_recovered} active={items.active_cases}/>
+                        );
+                    }))
+            }
+            else{
+                var countryData = (
+        
+                    this.state.filterArray.map(items=>{
+                        return(
+                         <Country key={items.country} name={items.country} url={items.flag} recovered={items.total_recovered} active={items.active_cases}/>
+                        );
+                    }))
+            }
 
             
 
@@ -45,7 +96,7 @@ class Countries extends PureComponent{
 }
 
 const mapStateToProps=(state)=>{
-    console.log('map',state.cou.countries);
+    //console.log('map',state.cou.countries);
     return{
         countriesData:state.cou.countries
     }

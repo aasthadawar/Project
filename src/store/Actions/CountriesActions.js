@@ -11,6 +11,7 @@ export const setCountriesDetails=(res)=>{
 
 export const initCountriesDetails=()=>{
     return dispatch =>{
+        setInterval(()=>{
         axios.get('https://corona-virus-stats.herokuapp.com/api/v1/cases/countries-search')
         .then(response=>{
             console.log('inside init',response.data.data);
@@ -19,5 +20,6 @@ export const initCountriesDetails=()=>{
         .catch(error=>{
             console.log('error is',error)
         })
+     },300000 )
     }
 }

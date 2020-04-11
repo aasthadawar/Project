@@ -1,0 +1,14 @@
+
+
+.Recovery{
+    border: 1px solid black;
+    margin:10px;
+    display: inline-block;
+    width:30%
+}
+
+.RecoveryLabel{
+    border-right: 1px solid black;
+    padding-right: 10px;
+    margin-right: 10px;
+}

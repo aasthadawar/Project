@@ -8,15 +8,15 @@ const casesReducer=(state=initialState,action)=>{
     //console.log('response reducer',action.details);
     switch(action.type){
         case actionTypes.CASE_DETAILS:
-            console.log('case re',state.cases)
+            //console.log('case re',state.cases)
             //console.log('response reducer switch',action.details);
             let details = action.details;
             
             //var destructure={...state,yo:{...state.cases}}
             //console.log('parse',destructure.yo.total);
             //console.log('des',destructure);
-            console.log('case',state);
-            console.log('details',details);
+            //console.log('case',state);
+            //console.log('details',details);
             return{
                ...state,
                cases:{...state.cases,
