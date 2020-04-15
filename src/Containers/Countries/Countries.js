@@ -19,7 +19,7 @@ class Countries extends PureComponent{
     }
 
     UNSAFE_componentWillMount(){
-        axios.get('https://corona-virus-stats.herokuapp.com/api/v1/cases/countries-search')
+        axios.get('https://corona-virus-stats.herokuapp.com/api/v1/cases/countries-search?limit=200')
         .then(response=>{
             var countryData = response.data.data.rows;
             var updatedArray = this.state.countryArray.concat(countryData);
@@ -74,12 +74,14 @@ class Countries extends PureComponent{
             }
             else{
                 var countryData = (
-        
-                    this.state.filterArray.map(items=>{
+                <ul>
+                    {this.state.filterArray.map(items=>{
                         return(
-                         <Country key={items.country} name={items.country} url={items.flag} recovered={items.total_recovered} active={items.active_cases}/>
+                         <li><Country key={items.country} name={items.country} url={items.flag} recovered={items.total_recovered} active={items.active_cases}/></li>
                         );
-                    }))
+                    })}
+                </ul>
+                )
             }
 
             

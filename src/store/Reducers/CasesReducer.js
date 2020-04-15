@@ -1,7 +1,8 @@
 import * as actionTypes from '../Actions/ActionTypes';
 
 const initialState={
-   cases:{total:0,recovered:0,active:0,deaths:0}
+   cases:{total:0,recovered:0,active:0,deaths:0},
+   update:''
 }
 
 const casesReducer=(state=initialState,action)=>{
@@ -23,7 +24,9 @@ const casesReducer=(state=initialState,action)=>{
                 total:details.total_cases,
             active:details.currently_infected,
         recovered:details.recovery_cases,
-    deaths:details.death_cases}
+    deaths:details.death_cases,
+    },
+    update:details.last_update
         
             }
     }

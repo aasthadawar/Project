@@ -2,6 +2,11 @@ import React from 'react';
 import Graph from '../UI/Graph/Graph';
 import styles from '../Case/Case.module.css'
 import Arrow from '../UI/Arrow/Arrow';
+import Col from 'react-bootstrap/Col'
+import Row from 'react-bootstrap/Row'
+import Container from 'react-bootstrap/Container';
+import upArrow from '../../assests/images/Up.png'
+import downArrow from '../../assests/images/Down.png';
 
 const Case =(props)=>{
   
@@ -9,34 +14,35 @@ const Case =(props)=>{
     switch(props.label){
         case 'total':
             caseLabels=(
-                <div> Total Cases</div>
+                <div className={styles.Labels}> Total Cases<img src={upArrow}></img></div>
             )
             break;
         case 'active':
             caseLabels=(
-                <div>Active Cases</div>
+                <div className={styles.Labels}>Active Cases<img src={upArrow}></img></div>
             )
             break; 
         case 'recovered':
             caseLabels=(
-                <div>Recovered</div>
+                <div className={styles.Labels}>Recovered<img src={downArrow}></img></div>
             )
             break;
         case 'deaths':
             caseLabels=(
-                <div>Total Death</div>
+                <div className={styles.Labels}>Total Death<img src={upArrow}></img></div>
             )
             break;   
 
     }
     
     return(
-        <div>
-                <h3>{caseLabels}</h3>
-                <Arrow label={props.label}/>
-            <p>{props.details}</p>
+        <div className={styles.Case}>
+            <div>
+                {caseLabels}
+                <p className={styles.Details}>{props.details}</p>
+            </div>
             <Graph label={props.label}/>
-        </div>
+        </div>  
     );
 }
 

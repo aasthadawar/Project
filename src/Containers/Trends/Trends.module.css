@@ -1,0 +1,43 @@
+.LabelFlex{
+    display:flex;
+    justify-content: space-between;
+    padding:15px;
+}
+
+.LabelFlex a{
+    text-decoration: none;
+    padding:10px;
+    font: Medium 12px/15px Montserrat;
+    color: #30313A;
+}
+
+.LabelFlex a:hover{
+    text-decoration: none;
+    color: white;
+    background: #52586A ;
+    border-radius: 8px;
+}
+
+.NavItem{
+    font: Medium 12px/15px Montserrat;
+    color: #30313A;
+    padding:10px;
+}
+
+ .active{
+    background: #52586A ;
+    border-radius: 8px;
+}
+
+.Label{
+    font-weight: bold;
+    font: SemiBold 18px/22px Montserrat;
+color: #30313A;
+}
+
+.MainLink{
+    background: #F5F5F5 ;
+    border-radius: 8px;
+    padding:7px 0px;
+    text-align:center;
+}

@@ -1,7 +1,13 @@
-.Nav{
-    text-decoration: none;
-    color:darkgray;
-    display: flex;
-    justify-content: space-evenly;
-    width: 40%;
+.NavItems {
+    padding:30px;
+    color:black;
+}
+
+.active{
+    color:red;
+    border-bottom: 1px solid red;
+}
+
+.NavItems a:hover{
+    color: green;
 }

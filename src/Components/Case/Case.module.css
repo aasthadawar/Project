@@ -1,0 +1,23 @@
+.Case{
+    display:flex;
+background: #FFFFFF 0% 0% no-repeat padding-box;
+box-shadow: 0px 5px 20px #1425401A;
+border-radius: 8px;
+padding:20px 0px;
+box-sizing: border-box;
+}
+
+.Labels{
+    text-align: left;
+font: Medium 14px/18px Montserrat;
+color: #52586A;
+}
+
+.Details{
+    text-align: left;
+font: SemiBold 24px/29px Montserrat;
+color: #30313A;
+margin-bottom: 0px;
+font-weight: bold;
+padding-top:10px;
+}

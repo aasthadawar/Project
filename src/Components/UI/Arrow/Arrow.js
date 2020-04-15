@@ -4,12 +4,10 @@ import downArrow from '../../../assests/images/Down.png';
 
 
 const Arrow=(props)=>{
-          var  caseArrow=(<img src={upArrow}></img>)
-        
     
     return(
         <div>
-            {caseArrow}
+            <img src={upArrow}></img>
         </div>
     )
     
