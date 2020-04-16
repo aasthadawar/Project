@@ -14,34 +14,34 @@ const Case =(props)=>{
     switch(props.label){
         case 'total':
             caseLabels=(
-                <div className={styles.Labels}> Total Cases<img src={upArrow}></img></div>
+                <div className={styles.Labels}> Total Cases<img className={styles.image} src={upArrow}></img></div>
             )
             break;
         case 'active':
             caseLabels=(
-                <div className={styles.Labels}>Active Cases<img src={upArrow}></img></div>
+                <div className={styles.Labels}>Active Cases<img className={styles.image} src={upArrow}></img></div>
             )
             break; 
         case 'recovered':
             caseLabels=(
-                <div className={styles.Labels}>Recovered<img src={downArrow}></img></div>
+                <div className={styles.Labels}>Recovered<img className={styles.image} src={downArrow}></img></div>
             )
             break;
         case 'deaths':
             caseLabels=(
-                <div className={styles.Labels}>Total Death<img src={upArrow}></img></div>
+                <div className={styles.Labels}>Total Death<img className={styles.image} src={upArrow}></img></div>
             )
             break;   
 
     }
-    
+
     return(
         <div className={styles.Case}>
             <div>
                 {caseLabels}
                 <p className={styles.Details}>{props.details}</p>
             </div>
-            <Graph label={props.label}/>
+            <Graph  className={styles.sub} label={props.label}/>
         </div>  
     );
 }

@@ -5,12 +5,17 @@ box-shadow: 0px 5px 20px #1425401A;
 border-radius: 8px;
 padding:20px 0px;
 box-sizing: border-box;
+padding:20px 15px;
 }
-
+.image{
+    height:10px;
+    width:14px;
+}
 .Labels{
     text-align: left;
 font: Medium 14px/18px Montserrat;
 color: #52586A;
+font-size: 14px;
 }
 
 .Details{
@@ -20,4 +25,8 @@ color: #30313A;
 margin-bottom: 0px;
 font-weight: bold;
 padding-top:10px;
+}
+
+.sub{
+    padding-left: 10px;
 }

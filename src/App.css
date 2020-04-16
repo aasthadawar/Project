@@ -4,27 +4,4 @@
 }
 
 
-  .Recovery_Recovery__1Va2W .CircularProgressbar .CircularProgressbar-path {
-    stroke:green;
-  }
   
-  .CircularProgressbar-path {
-    stroke: red;
-  }
-  .CircularProgressbar-trail {
-    stroke: gray;
-  }
-  
-  .CircularProgressbar-text {
-    fill: yellow;
-  }
-  
-  .CircularProgressbar-background {
-    fill: green;
-  }
-
-  .Recovery_Recovery__1Va2W .CircularProgressbar .CircularProgressbar-trail {
-    stroke: #d6d6d6;
-    stroke-linecap: round;
-  }
-

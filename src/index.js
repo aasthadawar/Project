@@ -8,13 +8,14 @@ import CasesReducer from './store/Reducers/CasesReducer';
 import thunk from 'redux-thunk';
 import CountriesReducer from './store/Reducers/CountriesReducer';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import NewCasesReducer from '../src/store/Reducers/NewCasesReducer';
+import GraphReducer from '../src/store/Reducers/GraphReducer';
 import NewCaseReducer from '../src/store/Reducers/NewCasesReducer';
 
 const rootReducer=combineReducers({
     cas:CasesReducer,
     cou:CountriesReducer,
-    newCas:NewCaseReducer
+    newCas:NewCaseReducer,
+    graph:GraphReducer
 })
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

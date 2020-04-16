@@ -1,0 +1,47 @@
+.label{
+    font: SemiBold 16px/19px Montserrat;
+    letter-spacing: 0px;
+    color: #30313A;
+    text-transform: capitalize;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.less{
+    display: inline-block;
+    height: 14px;
+    width: 14px;
+    background: #FFC4C6 0% 0% no-repeat padding-box;
+border-radius: 3px;
+text-transform: capitalize;
+margin-right: 5px;
+}
+
+.more{
+    display: inline-block;
+    height: 14px;
+    width: 14px;
+    background: #FF0019 0% 0% no-repeat padding-box;
+border-radius: 3px;
+text-transform: capitalize;
+margin-right: 5px;
+}
+
+.color{
+    display: flex;
+    
+}
+
+.color p{
+    margin-bottom: 0rem;
+    padding-bottom: 0;
+    text-transform: capitalize;
+    padding-right: 10px;
+}
+
+
+
+.colorMain{
+    display: flex;
+    justify-content: space-between;
+}

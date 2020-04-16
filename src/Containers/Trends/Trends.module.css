@@ -41,3 +41,19 @@ color: #30313A;
     padding:7px 0px;
     text-align:center;
 }
+
+.route{
+    display:flex;
+}
+
+.caseDetails{
+    width:20px;
+}
+
+.trend{
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+box-shadow: 0px 5px 20px #1425401A;
+border-radius: 8px;
+padding:15px;
+margin:10px;
+}

@@ -11,6 +11,7 @@ const setNewCasesDetails=(res)=>{
 
 export const initNewCasesDetails=()=>{
     return dispatch=>{
+        setInterval(()=>{
         axios.get('https://api.thevirustracker.com/free-api?global=stats')
     .then(response=>{
         console.log('new case response',response.data);
@@ -19,5 +20,6 @@ export const initNewCasesDetails=()=>{
     .catch(error=>{
         console.log('error',error);
     })
+ },300000 )
     }
 }

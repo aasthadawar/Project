@@ -1,7 +1,14 @@
-import React,{Component} from 'react';
-import { LineChart, PieChart } from 'react-chartkick'
+import React,{Component} from 'react'
+import { LineChart} from 'react-chartkick';
+import {connect} from 'react-redux';
 import 'chart.js';
+
+
 import axios from 'axios';
+import Spinner from '../../../Components/UI/Spinner/Spinner';
+
+
+
 
 
 class DeathGraph extends Component{
@@ -22,20 +29,19 @@ class DeathGraph extends Component{
             var data = response.data;
             data.forEach((countryObj) => {
                 Object.keys(countryObj.timeline.cases).forEach((date)=> {
-                    this.result.cases[date] = (this.result.cases[date] || 0) + countryObj.timeline.cases[date];
                     this.result.deaths[date] = (this.result.deaths[date] || 0) + countryObj.timeline.deaths[date];
-                    this.result.recovered[date] = (this.result.recovered[date] || 0) + countryObj.timeline.recovered[date];
                 });
              });
              console.log('result',this.result);
              var obj = this.result.deaths;
-             
+             console.log("*********  prev",this.result.deaths);
              var newKey="";
              for(var key in obj){
                 newKey=`"${key}"`;
                 this.newObj[newKey]=obj[key];
                 // console.log('key',this.newObj)
              }
+             console.log('*********** obj formed',this.newObj);
              //var newdata = {...this.newObj};
            //console.log('datta',newdata);
            this.setState({...this.state,line:true})
@@ -46,21 +52,52 @@ class DeathGraph extends Component{
     }
     
     render(){
-        
-            console.log('cases',this.result.deaths);
+        if(this.line==false){
+            var spinner = <Spinner/>
+        }
+        if(this.props.graphDetails){
+            if(this.props.graphDetails.length!=0)
+            {
+                console.log('######## props',this.props.graphDetails.length);
+                this.props.graphDetails.forEach((countryObj) => {
+                    Object.keys(countryObj.timeline.cases).forEach((date)=> {
+                        this.result.deaths[date] = (this.result.deaths[date] || 0) + countryObj.timeline.deaths[date];
+                    });
+                 });
+                 console.log('$$$$$$ props mei',this.result.deaths);
+                 var obj = this.result.deaths;
+                 var newKey="";
+             for(var key in obj){
+                newKey=`"${key}"`;
+                this.newObj[newKey]=obj[key];
+                // console.log('key',this.newObj)
+             }
+             console.log('*********** props formed',this.newObj);
+            }
+        }
            //var data = {...this.newObj};
           // console.log('datta',data);
-          if(this.state.line===true){
-              var chart = <LineChart  width="400px" height="200px" xtitle="Time" ytitle="Population" colors={["#FF0000"]} data={this.newObj} />
+          if(this.state.line==true){
+              var chart = <LineChart  width="400px" height="150px" colors={["#FF0000"]} data={this.newObj} />
           }
             
         
         return(
         <div>
+            {spinner}
             {chart}
         </div>
         );
     }
 }
 
-export default DeathGraph;
+const mapStateToProps=(state)=>{
+    console.log('**************** death graph hu mai',state.graph.graphCases);
+    return{
+        graphDetails:state.graph.graphCases
+    }
+}
+
+
+
+export default connect(mapStateToProps)(DeathGraph);

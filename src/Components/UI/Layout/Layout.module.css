@@ -18,16 +18,8 @@
 
 .Countries{
     border:1px solid black;
-    max-height:450px;
-    overflow-y:scroll;
 }
-.Countries::-webkit-scrollbar {
-    width: 10px;
-  }
 
- .Countries ::-webkit-scrollbar-button{
-      display:none;
-  }
 
   .CountryGraph{
       border:1px solid black;

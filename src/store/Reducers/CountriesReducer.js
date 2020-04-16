@@ -11,6 +11,7 @@ const CountriesReducer=(state=initialState,action)=>{
     switch(action.type){
         case actionTypes.COUNTRIES_DETAILS:
             //console.log('country',state.countries);
+            console.log('reducer country',action.details);
             var updatedArray=[];
             var countryArray=[];
             let details=action.details;

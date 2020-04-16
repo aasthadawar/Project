@@ -4,6 +4,7 @@ import { initCountriesDetails } from '../../store/Actions/CountriesActions';
 import Country from '../../Components/Country/Country';
 import styles from '../Countries/Countries.module.css';
 import axios from 'axios';
+import Spinner from '../../Components/UI/Spinner/Spinner';
 
 class Countries extends PureComponent{
     constructor(){
@@ -11,23 +12,35 @@ class Countries extends PureComponent{
         this.country=[];
         this.state={
             filterArray:[],
-            countryArray:[]
+            countryArray:[],
+            loading:false
         }
     }
-    componentDidMount(){
-        this.props.onShowCountriesDetails();
-    }
-
-    UNSAFE_componentWillMount(){
-        axios.get('https://corona-virus-stats.herokuapp.com/api/v1/cases/countries-search?limit=200')
+   async componentDidMount(){
+       var newCountryData;
+     let result = await axios.get('https://corona-virus-stats.herokuapp.com/api/v1/cases/countries-search?limit=200&page=1')
         .then(response=>{
-            var countryData = response.data.data.rows;
-            var updatedArray = this.state.countryArray.concat(countryData);
-            this.setState({...this.state,countryArray:updatedArray})
+            newCountryData = response.data.data.rows;
+            //var updatedArray = this.state.countryArray.concat(countryData);
+           // this.setState({...this.state,countryArray:updatedArray})
         })
         .catch(error=>{
             console.log('error is',error)
         })
+       // console.log('after await',result);
+         let newResult = await axios.get('https://corona-virus-stats.herokuapp.com/api/v1/cases/countries-search?limit=200&page=2')
+        .then(response=>{
+            var newUpdatedArray = response.data.data.rows;
+            var countryData = newUpdatedArray.concat(newCountryData);
+            var updatedArray = this.state.countryArray.concat(countryData);
+            console.log('updated array',updatedArray);
+            this.setState({...this.state,countryArray:updatedArray,loading:true})
+        })
+        .catch(error=>{
+            console.log('error is',error)
+        })
+        //console.log('after await2',newResult);
+        this.props.onShowCountriesDetails();
     }
 
     onSearchHandler=(event)=>{
@@ -42,7 +55,12 @@ class Countries extends PureComponent{
     }
 
     render(){
+        if(this.state.loading==false){
+            var spinner = (<Spinner/>)
+        }
        if(this.state.countryArray.length!=0){
+
+           console.log('@@@@@@@@@@@@@@@@@@@@render',this.state.countryArray);
           this.country=[]
            if(this.props.countriesData.length!=0){
                this.country=[]
@@ -74,10 +92,10 @@ class Countries extends PureComponent{
             }
             else{
                 var countryData = (
-                <ul>
+                    <ul >
                     {this.state.filterArray.map(items=>{
                         return(
-                         <li><Country key={items.country} name={items.country} url={items.flag} recovered={items.total_recovered} active={items.active_cases}/></li>
+                         <li className={styles.li}><Country key={items.country} name={items.country} url={items.flag} recovered={items.total_recovered} active={items.active_cases}/></li>
                         );
                     })}
                 </ul>
@@ -90,8 +108,12 @@ class Countries extends PureComponent{
         
         return(
             <div className={styles.Countries}>
+                {spinner}
                 {search}
-               {countryData}
+                <div className={styles.overflow}>
+                {countryData}
+                </div>
+               
             </div>
         );
     }

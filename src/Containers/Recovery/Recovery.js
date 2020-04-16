@@ -1,25 +1,27 @@
 import React,{PureComponent} from 'react';
-import styles from '../Recovery/Recovery.module.css';
+import styles from './Recovery.module.css';
 import {connect} from 'react-redux';
-import RatioWheel from '../UI/RatioWheel/RatioWheel';
+import RatioWheel from '../../Components/UI/RatioWheel/RatioWheel';
 import Aux from '../../hoc/Aux/Aux';
 import axios from 'axios';
+import Spinner from '../../Components/UI/Spinner/Spinner';
 
 class Recovery extends PureComponent{
     constructor(){
         super();
         this.state={
             total:0,
-            recovered:0
+            recovered:0,
+            loading:false
         }
     }
 
-    UNSAFE_componentWillMount(){
-        axios.get('https://corona-virus-stats.herokuapp.com/api/v1/cases/general-stats')
+    async componentDidMount(){
+       let result = await axios.get('https://corona-virus-stats.herokuapp.com/api/v1/cases/general-stats')
         .then(response=>{
            console.log('response',response.data.data);
            var caseData=response.data.data;
-           this.setState({...this.state,total:caseData.total_cases,recovered:caseData.recovery_cases})
+           this.setState({...this.state,total:caseData.total_cases,recovered:caseData.recovery_cases,loading:true})
         })
     
         .catch(error=>{
@@ -27,7 +29,10 @@ class Recovery extends PureComponent{
         })
     }
     render(){
-        if(this.state){
+        if(this.state.loading==false){
+            var spinner= (<Spinner/>)
+        }
+        if(this.state.total!==0 && this.state.recovered!==0){
             if(this.props.total!==0 && this.props.recovered!==0){
                 console.log('recovery props')
                 var total = this.props.total;
@@ -79,6 +84,7 @@ class Recovery extends PureComponent{
 
         return(
             <div className={styles.Recovery}>
+                {spinner}
                 {recovery}
             </div>
         );
