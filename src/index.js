@@ -10,12 +10,14 @@ import CountriesReducer from './store/Reducers/CountriesReducer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import GraphReducer from '../src/store/Reducers/GraphReducer';
 import NewCaseReducer from '../src/store/Reducers/NewCasesReducer';
+import NewsReducer from '../src/store/Reducers/NewsReducer';;
 
 const rootReducer=combineReducers({
     cas:CasesReducer,
     cou:CountriesReducer,
     newCas:NewCaseReducer,
-    graph:GraphReducer
+    graph:GraphReducer,
+    newsR:NewsReducer
 })
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

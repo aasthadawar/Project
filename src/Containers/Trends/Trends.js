@@ -40,8 +40,8 @@ class Trends extends PureComponent{
                 <CaseDetails className={styles.caseDetails}/>
                         <div>
                         <Route exact path="/" component={ConfirmGraph}/>
-                            <Route path="/home/recovered" component={RecoveredGraph}/>
-                            <Route path="/home/death" component={DeathGraph}/>
+                            <Route path="/recovered" component={RecoveredGraph}/>
+                            <Route path="/death" component={DeathGraph}/>
                         </div>
                 </div>
 

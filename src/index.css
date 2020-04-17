@@ -14,8 +14,12 @@ body {
 }
 
 .CircularProgressbar .CircularProgressbar-path {
-  stroke: green;
+  stroke: green!important;
   stroke-linecap: round;
   transition: stroke-dashoffset 0.5s ease 0s;
+}
+
+.body{
+  overflow-x: hidden;
 }
 

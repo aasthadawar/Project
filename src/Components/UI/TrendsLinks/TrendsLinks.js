@@ -7,8 +7,8 @@ const TrendsLinks=()=>{
     return(
         <Aux>
             <NavLink exact activeClassName={styles.active} activeStyle={{color:'white'}} to="/">Confirmed</NavLink>
-            <NavLink activeClassName={styles.active} activeStyle={{color:'white'}}  to="/home/recovered">Recovered</NavLink>
-            <NavLink activeClassName={styles.active} activeStyle={{color:'white'}}  to="/home/death">Deceased</NavLink>
+            <NavLink activeClassName={styles.active} activeStyle={{color:'white'}}  to="/recovered">Recovered</NavLink>
+            <NavLink activeClassName={styles.active} activeStyle={{color:'white'}}  to="/death">Deceased</NavLink>
         </Aux>
     );
 }
