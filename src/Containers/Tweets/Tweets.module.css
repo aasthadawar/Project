@@ -1,0 +1,4 @@
+.tweets{
+    max-height: 540px;
+    overflow-y: scroll;
+}
