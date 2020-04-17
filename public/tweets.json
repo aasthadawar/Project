@@ -1,0 +1,31 @@
+{
+    "tweets": [
+      {
+        "title": "World Health Organisation",
+        "description": "We are #United Nation'health agency.We are committed to achieving better health for everyone, everywhere - #HealthForAll",
+        "likes": 247,
+        "views": 4700,
+        "date": "17th April",
+        "url": "https://www.logolynx.com/images/logolynx/92/92bdae5204d9a36340ea456f9896adeb.png",
+        "initials": "@WHO"
+      },
+      {
+        "title": "PMO India",
+        "description": "PM@NarenderModi lauds spirit of COVID19 survivors,urges them to share their success to the people- #MannKiBaat",
+        "likes": 1600,
+        "views": 10000,
+        "date": "17th April",
+        "url": "https://staticmain.narendramodi.in/images/nmApp_img.png",
+        "initials": "@PMOIndia"
+      },
+      {
+        "title": "Donald J. Trumph",
+        "description": "We are fighting corona virus today with all our front - we hope to achieve it with the help of people- #Donald",
+        "likes": 1200,
+        "views": 5600,
+        "date": "16th April",
+        "url": "https://www.pngkit.com/png/detail/10-101595_donald-transparent-images-all-donald-trump-chaos-emeralds.png",
+        "initials": "@DONALDTRUMPH"
+      }
+    ]
+  }
