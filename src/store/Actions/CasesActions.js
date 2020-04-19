@@ -2,24 +2,24 @@ import * as actionTypes from './ActionTypes';
 import axios from 'axios';
 
 export const setCaseDetails=(res)=>{
-    //console.log('action',res);
+    console.log('action cases @@@@@@@@@@@@@@@@@@@@@@',res.results[0]);
     return{
         type:actionTypes.CASE_DETAILS,
-        details:res
+        details:res.results[0]
     }
 }
 
 export const initCaseDetails=()=>{
     return dispatch =>{
-          setInterval(()=>{
-                axios.get('https://corona-virus-stats.herokuapp.com/api/v1/cases/general-stats')
+          
+                axios.get('https://api.thevirustracker.com/free-api?global=stats')
         .then(response=>{
-           // console.log('inside init',response.data.data);
-            dispatch(setCaseDetails(response.data.data))
+           console.log('inside init %%%%%%%%%',response.data);
+            dispatch(setCaseDetails(response.data))
         })
         .catch(error=>{
             console.log('error is',error)
         })
-     },300000 )
+     
     }
 }

@@ -9,6 +9,7 @@ import upArrow from '../../assests/images/Up.png'
 import downArrow from '../../assests/images/Down.png';
 
 const Case =(props)=>{
+    var formatDetails = props.details.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   
         let caseLabels = '';
     switch(props.label){
@@ -19,12 +20,12 @@ const Case =(props)=>{
             break;
         case 'active':
             caseLabels=(
-                <div className={styles.Labels}>Active Cases<img className={styles.image} src={upArrow}></img></div>
+                <div style={{fontSize:'13px'}} className={styles.Labels}>Active Cases<img className={styles.image} src={upArrow}></img></div>
             )
             break; 
         case 'recovered':
             caseLabels=(
-                <div className={styles.Labels}>Recovered<img className={styles.image} src={downArrow}></img></div>
+                <div  className={styles.Labels}>Recovered<img className={styles.image} src={downArrow}></img></div>
             )
             break;
         case 'deaths':
@@ -39,7 +40,7 @@ const Case =(props)=>{
         <div className={styles.Case}>
             <div>
                 {caseLabels}
-                <p className={styles.Details}>{props.details}</p>
+                <p className={styles.Details}>{formatDetails}</p>
             </div>
             <Graph  className={styles.sub} label={props.label}/>
         </div>  

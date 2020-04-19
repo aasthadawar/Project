@@ -11,13 +11,12 @@ import Map from '../../../Containers/Map/Map';
 import News from '../../../Containers/News/News';
 import Tweets from '../../../Containers/Tweets/Tweets';
 import Trends from '../../../Containers/Trends/Trends';
-
+import {Route} from 'react-router-dom';
+import  ConfirmGraph from '../../../Containers/Trends/ConfirmGraph/ConfirmGraph';
+import DeathGraph from '../../../Containers/Trends/DeathGraph/DeathGraph';
+ 
 const Layout=()=>{
     return(
-       <Container fluid={true}>
-           <Row noGutters={true}>
-               <Col className={styles.Header} lg={12}><Header/></Col>
-               <Col lg={12}>
                <Container className={styles.margin} fluid={true}>
                 <Row noGutters={true} >
                     <Col className={styles.Col9} lg={9}><Cases/>
@@ -36,12 +35,7 @@ const Layout=()=>{
                         </Row>
                     </Col>
                 </Row>
-            
             </Container>
-               </Col>
-           </Row>
-            
-        </Container>
     );
 }
 

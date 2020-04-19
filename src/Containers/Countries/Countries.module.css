@@ -1,25 +1,64 @@
 
 .Search{
-    color:red;
-    
-    border:1px solid black;
-    border-radius: 10px;
+    border:1px solid #7A7D89;
+    border-radius: 12px;
     text-align: center;
+    background-color: #1425401A;
+    color:#52586A;
 }
+
+.Icon{
+    background-color: #1425401A;
+    border-radius: 12px;
+}
+
+input{
+    background-color: #686C8526;
+    border: none;
+    outline:none!important;
+    padding: 5px;
+    text-transform: capitalize;
+    border-radius: 2px;
+}
+
+input:focus{
+    outline:none!important
+}
+
 
 .Icon::before{
     content: '\f002';
     font-family: fontAwesome;
+    margin-right:8px;
+    color:#52586A;
 }
+
+
 
 .Countries{
     margin:10px;
     padding:10px;
     background-color: #FFFFFF;
     border-radius: 8px;
+    margin-left:20px;
 }
 
 .overflow{
     max-height: 380px;
     overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.overflow::-webkit-scrollbar {
+    width: 3px;
+    background: #dfe1e8;
+}
+
+.overflow::-webkit-scrollbar-thumb {
+    background: #7a7d89;
+
+}
+
+.Search input{
+    outline:none!important;
 }

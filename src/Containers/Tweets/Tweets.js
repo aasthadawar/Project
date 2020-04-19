@@ -3,39 +3,72 @@ import styles from '../Tweets/Tweets.module.css';
 import axios from 'axios';
 import Spinner from '../../Components/UI/Spinner/Spinner'
 import TweetItem from './TweetItem/TweetItem';
+import { initTweetsDetails } from '../../store/Actions/TweetsAction';
+import {connect} from 'react-redux';
+import tweets from '../../assests/images/twitter.png';
+
 
 
 class Tweet extends PureComponent{
-    state={
-        loading:false,
-        tweets:[]
-    }
+    myInterval=" ";
+        state={
+            loading:false
+        }
     componentDidMount(){
-        axios('./tweets.json')
-        .then(response=>{
-            console.log(response.data.tweets)
-            this.setState({...this.state,loading:true,tweets:response.data.tweets});
-        })
-        .catch(error=>console.log(error))
+        this.props.onTweetsDetails();
+        this.setState({...this.state,loading:true})
+        this.myInterval = setInterval(()=>{
+            this.props.onTweetsDetails()
+        },600000)
     }
-    render(){
+    componentWillUnmount(){
+        clearInterval(this.myInterval);
+    }
+    render(){          
         if(this.state.loading==false){
-            var spinner = (<Spinner/>)
+            var spinner = (<Spinner/>)     }
+        if(this.props.tweets){
+            if(this.props.tweets.length!=0){
+                console.log('#########@@@@@@@@@@ tweets comp',this.props.tweets);
+              var tweet =(this.props.tweets.map(items=>{
+                  var splitted = items.created_at.split(' ');
+                  var date = `${splitted[2]}th ${splitted[1]}`;
+                  var text = items.text.split('https')[0];
+                    return(
+                        <TweetItem key={items.id}
+                        description={text}  date={date}
+                        share={items.retweet_count} likes={items.favorite_count}
+                        heading={items.user.name} value={items.user.screen_name}
+                        url={items.user.profile_image_url_https}
+                        />
+                    );
+                }))
+            }
         }
-        if(this.state.tweets.length!=0){
-           var tweet = (this.state.tweets.map(items=>{
-                return(
-                    <TweetItem heading={items.title} url={items.url} description={items.description} likes={items.likes} view={items.views} date={items.date}/>
-                );
-            }))
-        }
+      
         return(
             <div  className={styles.tweets}>
+                <h2 className={styles.heading}>Latest Tweets<img src={tweets}></img></h2>
+                <div className={styles.tweet}>
                 {spinner}
                 {tweet}
+                </div>
+                
             </div>
         );
     }
 }
 
-export default Tweet;
+const mapStateToProps=(state)=>{
+    return{
+        tweets:state.tweet.tweets
+    }
+}
+
+const mapDispatchToProps=(dispatch)=>{
+    return{
+        onTweetsDetails:()=>dispatch(initTweetsDetails())
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Tweet);

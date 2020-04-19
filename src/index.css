@@ -23,3 +23,11 @@ body {
   overflow-x: hidden;
 }
 
+.CircularProgressbar .CircularProgressbar-text {
+  fill: black!important;
+}
+
+input{
+  outline:none!important;
+}
+

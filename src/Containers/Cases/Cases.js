@@ -12,47 +12,31 @@ import Spinner from '../../Components/UI/Spinner/Spinner';
 class Cases extends PureComponent{
     constructor(){
         super();
-        this.cases=[];
-        this.state={
-            total:0,
-            active:0,
-            recovered:0,
-            deaths:0,
-            loading:false
-        };
+        this.myInterval='';
         this.obj={}
     }
     
       componentDidMount(){
-         axios.get('https://corona-virus-stats.herokuapp.com/api/v1/cases/general-stats')
-        .then((response)=>{
-            var caseData = response.data.data;
-            console.log('data came')
-            this.setState({...this.state,total:caseData.total_cases,active:caseData.currently_infected,recovered:caseData.recovery_cases,deaths:caseData.death_cases,loading:true})
-        })
-        .catch(error=>console.log('error is',error))
-        
         this.props.onShowCaseDetails();
+        this.myInterval = setInterval(()=>{
+            console.log('called');
+            this.props.onShowCaseDetails()
+        },600000)
 
     }
+    componentWillUnmount(){
+        clearInterval(this.myInterval);
+    }
     render(){
-        if(this.state.loading==false){
+        if(this.props.casesDetails.total==0 && this.props.casesDetails.active==0 && this.props.casesDetails.recovered==0 && this.props.casesDetails.deaths==0){
             var spinner = (<Spinner/>)
         }
-        if(this.state.total!==0 && this.state.active!==0 && this.state.recovered!==0 && this.state.deaths!==0){
-            if(this.props.casesDetails.total!==0 && this.props.casesDetails.active!==0 && this.props.casesDetails.recovered!==0 && this.props.casesDetails.deaths!==0 ){
+    
+         if(this.props.casesDetails.total!==0 && this.props.casesDetails.active!==0 && this.props.casesDetails.recovered!==0 && this.props.casesDetails.deaths!==0 ){
                 this.obj=this.props.casesDetails;
-                console.log('props')
-            }
-            else{
-                this.obj=this.state;
-                console.log('state')
-            }
+                //console.log('props')
             this.cases=[];     
             for(let key in this.obj){
-                if(key=='loading'){
-                    continue;
-                }
                 var newObj={}
                 newObj[key]=this.obj[key];
                 this.cases.push(newObj);
@@ -64,8 +48,8 @@ class Cases extends PureComponent{
                     );
                 }
             })) 
+        
         }
-         
         return(
             <div className={styles.case}>
                 <Row >

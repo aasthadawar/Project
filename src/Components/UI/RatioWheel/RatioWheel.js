@@ -12,8 +12,8 @@ const RatioWheel=(props)=>{
         //console.log('props',props);
         var total= props.total;
         var recovered=props.recovered;
-        var formattedTotal= parseInt(total.split(',').join(''));
-        var formattedRecovered = parseInt(recovered.split(',').join(''));
+        var formattedTotal= parseInt(total);
+        var formattedRecovered = parseInt(recovered);
         //console.log('formattedtotal',formattedTotal);
         //console.log('formattedrecovered',formattedRecovered)
         var percentage=formattedRecovered/formattedTotal;

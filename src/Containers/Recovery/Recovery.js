@@ -7,80 +7,29 @@ import axios from 'axios';
 import Spinner from '../../Components/UI/Spinner/Spinner';
 
 class Recovery extends PureComponent{
-    constructor(){
-        super();
-        this.state={
-            total:0,
-            recovered:0,
-            loading:false
-        }
-    }
-
-    async componentDidMount(){
-       let result = await axios.get('https://corona-virus-stats.herokuapp.com/api/v1/cases/general-stats')
-        .then(response=>{
-           console.log('response',response.data.data);
-           var caseData=response.data.data;
-           this.setState({...this.state,total:caseData.total_cases,recovered:caseData.recovery_cases,loading:true})
-        })
-    
-        .catch(error=>{
-            console.log('error is',error)
-        })
-    }
     render(){
-        if(this.state.loading==false){
+        if(this.props.total==0 && this.props.recovered==0){
             var spinner= (<Spinner/>)
         }
-        if(this.state.total!==0 && this.state.recovered!==0){
-            if(this.props.total!==0 && this.props.recovered!==0){
-                console.log('recovery props')
+         else  if(this.props.total!==0 && this.props.recovered!==0){
+               // console.log('recovery props')
                 var total = this.props.total;
-                var formattedTotal = parseInt(total.split(',').join(''));
-                    var filteredTotal = formattedTotal/10000;
-                    console.log('props',filteredTotal.toFixed(1));
-                    var totalCases = this.props.total;
+                //console.log('!!!!!!!!!!!!!!!!!!@@@@@@@@@',typeof total)
                 var recoveredCases = this.props.recovered;
+                var newTotal = (total/1000).toFixed(1);
+                var newRecovered = (recoveredCases/10000).toFixed(1);
                 var recovery = (
                     <Aux>
                         <p className={styles.RecoveryLabel}>Ratio Of Recovery</p>
-                <RatioWheel total={totalCases} recovered={recoveredCases}/>
+                <RatioWheel total={total} recovered={recoveredCases}/>
                 <div className={styles.CaseLabel}>
-                    <p  className={styles.RecoveryDetails}>{totalCases} Affected</p>
-                    <p className={styles.RecoveryDetails}>{recoveredCases}  Recovered</p>
+                    <p  className={styles.newRecoveryDetails}>{newTotal}k Affected</p>
+                    <p className={styles.RecoveryDetails}>{newRecovered}k  Recovered</p>
                 </div>
                     </Aux>
                 )
             }
-            else{
-                console.log('recovery state');
-                if(this.state.total!=0 && this.state.recovered!=0){
-                    console.log('not zero');
-                    var total=this.state.total;
-                    var formattedTotal = parseInt(total.split(',').join(''));
-                    var filteredTotal = formattedTotal/10000;
-                    console.log(filteredTotal.toFixed(1));
-                    var totalCases = this.state.total;
-                    var recoveredCases = this.state.recovered;
-                }
-                else if(this.state.total==0 && this.state.recovered==0){
-                    console.log('zero');
-                    var totalCases = this.state.total;
-                    var recoveredCases = this.state.recovered;
-                }
-                var recovery = (
-                    <Aux>
-                        <p className={styles.RecoveryLabel}>Ratio Of Recovery</p>
-                <RatioWheel total={totalCases} recovered={recoveredCases}/>
-                <div className={styles.CaseLabel}>
-                    <p  className={styles.RecoveryDetails}>{totalCases} Affected</p>
-                    <p className={styles.RecoveryDetails}>{recoveredCases} Recovered</p>
-                </div>
-                
-                    </Aux>
-                )
-            }
-        }
+            
 
         return(
             <div className={styles.Recovery}>

@@ -1,16 +1,24 @@
 .Logo{
     display:flex;
-    align-items: center;
-   
+    align-items: center;   
 }
 
 .LogoImage{
-    
+    margin-right: 5px;
 }
 
 .LogoText{
     color: red;
     font-weight: bold;
-    font-size: 18px;
-    padding:0 0 0 5px
+    font-size: 20px;
+    padding:0 0 0 5px;
+    align-self: center;
+}
+
+.Logo p{
+    margin-bottom: 0px!important;
+}
+
+.Logo a{
+    cursor: pointer;
 }

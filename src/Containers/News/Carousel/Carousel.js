@@ -5,7 +5,7 @@ import Aux from '../../../hoc/Aux/Aux';
 
 const Carousel = (props) => {
     var url = `../${props.route}`;
-    console.log('url is',url); 
+    //console.log('url is',url); 
     return (
         <Aux>
             <div className={styles.News}>

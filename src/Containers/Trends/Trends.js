@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import styles from './Trends.module.css';
 import TrendsLinks from '../../Components/UI/TrendsLinks/TrendsLinks';
 
-import CaseDetails from './CaseDetails/CaseDetails';
+import {NavLink,Switch} from 'react-router-dom';
 
 import {Route} from 'react-router-dom';
 import ConfirmGraph from '../Trends/ConfirmGraph/ConfirmGraph';
@@ -15,17 +15,23 @@ import {connect} from 'react-redux';
 
 
 class Trends extends PureComponent{
-    state={
-        loading:false
-    }
     componentDidMount(){
         this.props.onGraphDetails();
-        this.setState({...this.state,loading:true});
     }
 
     render(){
-        if(this.state.loading==false){
-            var spinner = (<Spinner/>);
+        if(this.props.graphDetails){
+            if(this.props.graphDetails.length==0){
+            var spinner = (<Spinner/>);}
+            else if(this.props.graphDetails.length!=0){
+                var links = (
+                    <Aux>
+                   <NavLink exact activeClassName={styles.active} to="/home">Confirmed</NavLink>
+                        <NavLink exact activeClassName={styles.active} to="/home/recovered">Recovered</NavLink>
+                       <NavLink exact activeClassName={styles.active} to="/home/death">Deceased</NavLink>
+                    </Aux>
+                )
+            }
         }
         return(
             <div className={styles.trend}>
@@ -33,18 +39,17 @@ class Trends extends PureComponent{
                 <div className={styles.LabelFlex}>
                     <p className={styles.Label}>Spread Trends</p>
                     <div className={styles.MainLink}>
-                        <TrendsLinks/>
+                        {links}
                     </div>
                 </div>
-                <div className={styles.route}>
-                <CaseDetails className={styles.caseDetails}/>
-                        <div>
-                        <Route exact path="/" component={ConfirmGraph}/>
-                            <Route path="/recovered" component={RecoveredGraph}/>
-                            <Route path="/death" component={DeathGraph}/>
-                        </div>
-                </div>
+                <Switch>
+                <Route exact path="/home/confirmed" component={ConfirmGraph}></Route>
+                <Route exact  path="/home/recovered" component={RecoveredGraph}></Route>
+                <Route exact path="/home/death" component={DeathGraph}></Route>
+                <Route exact path="/home" component={ConfirmGraph}></Route>
 
+                </Switch>
+                
             </div>
         );
     }

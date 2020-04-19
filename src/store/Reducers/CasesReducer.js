@@ -1,8 +1,7 @@
 import * as actionTypes from '../Actions/ActionTypes';
 
 const initialState={
-   cases:{total:0,recovered:0,active:0,deaths:0},
-   update:''
+   cases:{total:0,recovered:0,active:0,deaths:0}
 }
 
 const casesReducer=(state=initialState,action)=>{
@@ -10,7 +9,7 @@ const casesReducer=(state=initialState,action)=>{
     switch(action.type){
         case actionTypes.CASE_DETAILS:
             //console.log('case re',state.cases)
-            //console.log('response reducer switch',action.details);
+            console.log('response reducer cases%%%%%%%%%%%',action.details);
             let details = action.details;
             
             //var destructure={...state,yo:{...state.cases}}
@@ -22,12 +21,10 @@ const casesReducer=(state=initialState,action)=>{
                ...state,
                cases:{...state.cases,
                 total:details.total_cases,
-            active:details.currently_infected,
-        recovered:details.recovery_cases,
-    deaths:details.death_cases,
-    },
-    update:details.last_update
-        
+            active:details.total_active_cases,
+        recovered:details.total_recovered,
+    deaths:details.total_deaths,
+    },    
             }
     }
     return state;

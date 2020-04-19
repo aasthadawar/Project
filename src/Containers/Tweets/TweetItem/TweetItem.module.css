@@ -1,12 +1,14 @@
 .heading{
     display: flex;
+    align-items: center;
 }
 
 .image{
-    width: 100px;
-    height:100px;
-    margin-right: 15px;
-    margin-bottom: 15px;
+    width: 90px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 5px;
+    margin-bottom: 5px;
 }
 
 .sub{
@@ -20,15 +22,23 @@
 }
 
 .tweet{
-    margin:10px;
-    border:1px solid black;
-    padding:10px;
-    background-color: white;
-    border-radius: 8px;
+    border-bottom:1px solid #DBDBDB;
+    padding: 10px;
 }
 
 .views{
     margin-right: 10px;
+    font: Regular 10px/20px Montserrat;
+letter-spacing: 0px;
+color: #F52D5C;
+font-size: 14px;
+}
+
+.share{
+    font: Regular 10px/20px Montserrat;
+letter-spacing: 0px;
+color: #54B5F5;
+font-size: 14px;
 }
 
 .image1{
@@ -38,4 +48,43 @@
 .heading h2{
     font-size: 20px;
     font-weight: bold;
+}
+.value{
+    display:flex;
+    flex-direction: column;
+}
+
+.value h2{
+    
+    font: SemiBold 12px/24px Montserrat;
+letter-spacing: 0px;
+color: #252525;
+font-size: 14px;
+margin-bottom:0px!important;
+line-height: 1rem;
+}
+
+p{
+    margin-bottom: 0rem!important;
+}
+
+.description{
+    font: Regular 10px/15px Montserrat;
+letter-spacing: 0px;
+color: #252525;
+font-size: 12px;
+}
+
+.date{
+    font: Regular 10px/20px Montserrat;
+letter-spacing: 0px;
+color: #252525;
+font-size: 12px;
+}
+
+.subheading{
+    font: Regular 12px/24px Montserrat;
+letter-spacing: 0px;
+color: #252525;
+font-size: 12px;
 }

@@ -11,7 +11,6 @@ export const setGraphDetails=(res)=>{
 
 export const initGraphDetails=()=>{
     return dispatch =>{
-        setInterval(()=>{
                 axios.get('https://corona.lmao.ninja/v2/historical')
         .then(response=>{
            console.log('!!!!!!!!!!inside init',response.data);
@@ -20,6 +19,5 @@ export const initGraphDetails=()=>{
         .catch(error=>{
             console.log('error is',error)
         })
-    },300000)
      }
     }

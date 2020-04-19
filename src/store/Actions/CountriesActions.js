@@ -11,23 +11,17 @@ export const setCountriesDetails=(res)=>{
 
  export const initCountriesDetails=()=>{
     return  dispatch =>{
-            setInterval(()=>{
                 var updateArray=[]
-               async function countryDetails(){
-               let result = await axios.get('https://corona-virus-stats.herokuapp.com/api/v1/cases/countries-search?limit=200&page=1')
+                async function countryDetails(){
+            await axios.get('https://corona-virus-stats.herokuapp.com/api/v1/cases/countries-search?limit=200&page=1')
                 .then(response=>{
                     updateArray = response.data.data.rows;
-                    console.log('1st array',updateArray);
-                    //var newArray=response.data.data.rows;
-                    //var finalArray = newArray.concat(updateArray);
-                    //console.log('inside init',finalArray);
-                    //dispatch(setCountriesDetails(finalArray))
                 })
                 .catch(error=>{
                     console.log('error is',error)
                 })
 
-                let newResult = await axios.get('https://corona-virus-stats.herokuapp.com/api/v1/cases/countries-search?limit=200&page=2')
+                axios.get('https://corona-virus-stats.herokuapp.com/api/v1/cases/countries-search?limit=200&page=2')
                 .then(response=>{
                     var newArray=response.data.data.rows;
                     var finalArray = [...newArray,...updateArray];
@@ -37,11 +31,8 @@ export const setCountriesDetails=(res)=>{
                 .catch(error=>{
                     console.log('error is',error)
                 })
-               }
-               countryDetails();
-         
-            
-         },300000 )
-       
+                }
+                countryDetails();
+
     }
 }

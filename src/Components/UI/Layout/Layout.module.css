@@ -1,11 +1,12 @@
 .margin{
-    border:1px solid black;
+    padding-right: 0px!important;
+    padding-left: 0px !important;
     background-color: #1425401A;
 }
 
 .Col9{
     padding-right: 20px;
-    border: 1px solid black;
+    
 }
 
 .Col3{
@@ -13,31 +14,34 @@
 }
 
 .Map{
-    border:1px solid black;
+   
 }
 
 .Countries{
-    border:1px solid black;
+   
 }
 
 
   .CountryGraph{
-      border:1px solid black;
-      
+    
   }
 
   .News{
-      border:1px solid black;
+     
   }
 
   .Tweets{
-      border:1px solid black;
+      
   }
 
   .Recovery{
-      border:1px solid black;
+    
   }
 
   .Header{
-      border:1px solid black;
+  }
+
+  .fluid{
+    padding-right: 0px!important;
+    padding-left: 0px !important;
   }
