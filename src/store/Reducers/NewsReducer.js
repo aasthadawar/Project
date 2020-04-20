@@ -1,14 +1,14 @@
 import * as actionTypes from '../Actions/ActionTypes';
 
 const initialState={
-    news:[]
+    news:[],
+    newsError:false
 }
 
 const NewsReducer=(state=initialState,action)=>{
     switch(action.type){
         case actionTypes.NEWS_DETAILS:
             var details = action.details;
-            console.log('&&&**** reducer',action.details);
             var updatedArray=[];
             var newsArray=[];
              newsArray=updatedArray.concat(details);
@@ -16,6 +16,12 @@ const NewsReducer=(state=initialState,action)=>{
                 ...state,
                 news:newsArray
             }
+        case actionTypes.FETCH_NEWS_ERRORS:
+            return{
+                ...state,
+                newsError:true,
+            }
+
     }
     return state;
 }

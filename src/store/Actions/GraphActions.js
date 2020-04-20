@@ -1,23 +1,30 @@
 import * as actionTypes from './ActionTypes';
 import axios from 'axios';
 
+const proxyurl = "https://cors-anywhere.herokuapp.com/";
+
 export const setGraphDetails=(res)=>{
-    console.log('!!!!!!!!!!!action',res);
     return{
         type:actionTypes.GRAPH_CASES,
         details:res
     }
 }
 
+export const fetchGraphErrors=(res)=>{
+    return{
+        type:actionTypes.FETCH_GRAPH_ERRORS,
+        error:res
+    }
+}
+
 export const initGraphDetails=()=>{
     return dispatch =>{
-                axios.get('https://corona.lmao.ninja/v2/historical')
+                axios.get(proxyurl+'https://corona.lmao.ninja/v2/historical')
         .then(response=>{
-           console.log('!!!!!!!!!!inside init',response.data);
             dispatch(setGraphDetails(response.data))
         })
         .catch(error=>{
-            console.log('error is',error)
+            dispatch(fetchGraphErrors(error));
         })
      }
     }

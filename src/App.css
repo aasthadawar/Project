@@ -1,11 +1,6 @@
 .App{
   margin:0 auto;
-  max-width:1200px;
-  padding-right: 0px!important;
-  padding-left: 0px !important;
+  max-width:1366px;
+
 }
 
-.fluid{
-  padding-right: 0px!important;
-  padding-left: 0px !important;
-}

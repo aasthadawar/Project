@@ -7,7 +7,7 @@
 }
 
 .tweet{
-    max-height: 460px;
+    max-height: 480px;
     overflow-y: scroll;
     overflow-x:hidden;
 }
@@ -33,3 +33,18 @@
     margin-left: 10px;
 }
 
+@media (min-width:600px) and (max-width:800){
+    .heading{
+        font-size: 30px;
+        text-align: center;
+        margin:0 auto;
+        margin-left: 60px;
+    }
+    
+}
+
+@media (max-width:992px){
+    .tweets{
+        margin-right: 10px;
+    }
+}

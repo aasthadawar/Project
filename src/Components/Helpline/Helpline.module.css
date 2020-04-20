@@ -1,0 +1,38 @@
+.helpline{
+    background-image: url('../../assests/images/Capture.PNG') ;
+    background: transparent url(/static/media/Capture.16832f4a.PNG) no-repeat center center /cover;
+    height: 700px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.overlay{
+    height:100%;
+    background: rgba(28, 40, 51 ,0.7);
+    padding: 20px;
+}
+
+.box a{
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+    padding: 10px 20px;
+    background-color: white;
+    color: black;
+ 
+}
+
+.box a:hover{
+    color:red;
+    text-decoration: none;
+}
+
+.box{
+    margin: 10px;
+}
+
+ul{
+    list-style: square;
+    color: red;
+}

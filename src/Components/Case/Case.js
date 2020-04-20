@@ -1,10 +1,6 @@
 import React from 'react';
 import Graph from '../UI/Graph/Graph';
 import styles from '../Case/Case.module.css'
-import Arrow from '../UI/Arrow/Arrow';
-import Col from 'react-bootstrap/Col'
-import Row from 'react-bootstrap/Row'
-import Container from 'react-bootstrap/Container';
 import upArrow from '../../assests/images/Up.png'
 import downArrow from '../../assests/images/Down.png';
 

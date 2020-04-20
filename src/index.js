@@ -13,6 +13,7 @@ import NewCaseReducer from '../src/store/Reducers/NewCasesReducer';
 import NewsReducer from '../src/store/Reducers/NewsReducer';
 import tweetsReducer from './store/Reducers/TweetsReducer';
 
+
 const rootReducer=combineReducers({
     cas:CasesReducer,
     cou:CountriesReducer,
@@ -29,9 +30,15 @@ const store=createStore(rootReducer,composeEnhancers(
 ))
 
 ReactDOM.render(
+
   <Provider store={store}>
+  
+  
     <App/>
+   
+    
   </Provider>
+  
   ,
   document.getElementById('root')
 );

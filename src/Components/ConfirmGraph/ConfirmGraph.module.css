@@ -1,0 +1,48 @@
+.description{
+    position: absolute;
+    color: #FF6C75;
+    display: inline-block;
+    font-size: 12px;
+    margin-left: 150px;
+    margin-top: 20px;
+}
+
+p,h2,h1{
+    margin-bottom:0rem!important;
+}
+
+.chart{
+    position:relative;
+    display: flex;
+}
+
+.heading{
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.flex{
+    display: flex;
+    color: red;
+}
+
+.new{
+    padding-top: 3px;
+    margin-left: 5px;
+}
+
+.new::before{
+    content:'\f067';
+    font-family: fontAwesome;
+    color: red;
+    font-size: 7px;
+}
+
+@media (min-width:450px) and (max-width:768px){
+    .description{
+        margin-left: 100px;
+        margin-top: 20px;
+        font-size: 14px;
+    }
+}
+

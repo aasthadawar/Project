@@ -2,26 +2,27 @@ import React from 'react';
 import styles from '../Country/Country.module.css';
 import Arrow from '../UI/Arrow/Arrow';
 const Country=(props)=>{
-    //console.log('hi country');
     var affect="";
     var recover = "";
     var showAffect = "";
     var showRecover = "";
-    if(props.active.split('').length>3 ){
+    if(props.active.split('').length>3 )
+    {
        affect = ((parseInt(props.active.split(',').join('')))/1000).toFixed(2);
-       //console.log('#################!!!!! affect',affect,'kkkkk',typeof affect);
        showAffect=  <p className={styles.active}>{affect}k affected</p>
     }
-    else{
+    else
+    {
         affect = parseInt(props.active.split(',').join(''));
         showAffect=  <p className={styles.active}>{affect} affected</p>
     }
-    if(props.recovered.split('').length>3){
+    if(props.recovered.split('').length>3)
+    {
         recover = ((parseInt(props.recovered.split(',').join('')))/1000).toFixed(2);
         showRecover =  <p className={styles.recover}>{recover}k recovered</p>
-  
     }
-    else{
+    else
+    {
         recover = parseInt(props.recovered.split(',').join(''));
         showRecover =  <p className={styles.recover}>{recover} recovered</p>
     }

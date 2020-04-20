@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../CountryMap/CountryMap.module.css';
+import styles from './CountryMap.module.css';
 
 const CountryMap=()=>{
     return(

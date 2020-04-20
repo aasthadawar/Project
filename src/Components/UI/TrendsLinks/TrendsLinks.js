@@ -6,9 +6,9 @@ import styles from './TrendsLinks.module.css';
 const TrendsLinks=()=>{
     return(
         <Aux>
-            <NavLink exact activeClassName={styles.active} to="/">Confirmed</NavLink>
-            <NavLink activeClassName={styles.active}  to="/recovered">Recovered</NavLink>
-            <NavLink activeClassName={styles.active}   to="/death">Deceased</NavLink>
+            <NavLink exact activeClassName={styles.active} to="/home">Confirmed</NavLink>
+            <NavLink exact activeClassName={styles.active} to="/home/recovered">Recovered</NavLink>
+            <NavLink exact activeClassName={styles.active} to="/home/death">Deceased</NavLink>
         </Aux>
     );
 }

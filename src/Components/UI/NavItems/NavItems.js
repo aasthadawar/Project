@@ -7,7 +7,7 @@ import Aux from '../../../hoc/Aux/Aux';
 const NavItems=()=>{
     return(
         <div className={styles.main}>
-            <NavLink className={styles.NavItems} activeClassName={styles.active} exact to="/home">Home</NavLink>
+            <NavLink className={styles.NavItems} activeClassName={styles.active} to="/home">Home</NavLink>
             <NavLink className={styles.NavItems} activeClassName={styles.active} to="/faq">FAQ</NavLink>
             <NavLink className={styles.NavItems} activeClassName={styles.active} to="/helpline">Helpline</NavLink>
         </div>

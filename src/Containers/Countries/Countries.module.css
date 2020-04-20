@@ -44,7 +44,7 @@ input:focus{
 }
 
 .overflow{
-    max-height: 380px;
+    max-height: 370px;
     overflow-y: scroll;
     overflow-x: hidden;
 }
@@ -61,4 +61,14 @@ input:focus{
 
 .Search input{
     outline:none!important;
+}
+
+@media (min-width:992px) and (max-width:1060px){
+    .Search{
+        width: 90%;
+        margin:0 auto;
+    }
+    input{
+        width: 100%;
+    }
 }

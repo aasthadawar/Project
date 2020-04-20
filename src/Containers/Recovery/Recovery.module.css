@@ -19,7 +19,7 @@ margin-right:20px
 
 .CaseLabel{
     display:flex;
-    margin:0 auto;
+    justify-content: center;
     
 }
 
@@ -31,6 +31,7 @@ font-weight: bold;
 text-align: center;
 padding-bottom:15px;
 margin:0px;
+font-size: 16px;
 
 }
 
@@ -59,5 +60,48 @@ margin:0px;
 .Special{
     padding-right:10px;
     border-right: 1px solid black;
+}
+
+@media (max-width: 992px){
+    .Recovery{
+        margin-top: 10px;
+        margin-right: 10px;
+    }
+    .RecoveryDetails{
+        font-size: 18px;
+    }
+    .newRecoveryDetails{
+        font-size: 18px;
+    }
+    .RecoveryLabel{
+        font-size: 20px;
+    }
+
+}
+
+@media (min-width:700px) and (max-width:880px){
+    .RecoveryLabel{
+        font-size: 24px;
+    }
+    .RecoveryDetails{
+        font-size: 22px;
+    }
+    .newRecoveryDetails{
+        font-size: 22px;
+    }
+
+}
+
+@media (min-width:870px) and (max-width:992px){
+    .RecoveryLabel{
+        font-size: 28px;
+    }
+    .RecoveryDetails{
+        font-size: 26px;
+    }
+    .newRecoveryDetails{
+        font-size: 26px;
+    }
+
 }
 

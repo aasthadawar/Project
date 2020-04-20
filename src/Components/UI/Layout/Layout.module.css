@@ -2,6 +2,7 @@
     padding-right: 0px!important;
     padding-left: 0px !important;
     background-color: #1425401A;
+    overflow-x: hidden!important;
 }
 
 .Col9{
@@ -13,33 +14,6 @@
     padding-left:0px;
 }
 
-.Map{
-   
-}
-
-.Countries{
-   
-}
-
-
-  .CountryGraph{
-    
-  }
-
-  .News{
-     
-  }
-
-  .Tweets{
-      
-  }
-
-  .Recovery{
-    
-  }
-
-  .Header{
-  }
 
   .fluid{
     padding-right: 0px!important;

@@ -1,0 +1,11 @@
+.image{
+    width:100px;
+    height:100px;
+}
+
+.error{
+    display: flex;
+    display: inline-block;
+   margin: 0 auto;
+   flex-direction: column;
+}

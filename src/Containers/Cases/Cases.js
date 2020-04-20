@@ -3,11 +3,10 @@ import {connect} from 'react-redux';
 import {initCaseDetails} from '../../store/Actions/CasesActions';
 import Case from '../../Components/Case/Case';
 import styles from '../Cases/Cases.module.css';
-import axios from 'axios';
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
-import Container from 'react-bootstrap/Container'
 import Spinner from '../../Components/UI/Spinner/Spinner';
+import ErrorHandling from '../../Components/ErrorHandling/ErrorHandling';
 
 class Cases extends PureComponent{
     constructor(){
@@ -16,10 +15,10 @@ class Cases extends PureComponent{
         this.obj={}
     }
     
-      componentDidMount(){
+    componentDidMount()
+    {
         this.props.onShowCaseDetails();
         this.myInterval = setInterval(()=>{
-            console.log('called');
             this.props.onShowCaseDetails()
         },600000)
 
@@ -28,46 +27,59 @@ class Cases extends PureComponent{
         clearInterval(this.myInterval);
     }
     render(){
-        if(this.props.casesDetails.total==0 && this.props.casesDetails.active==0 && this.props.casesDetails.recovered==0 && this.props.casesDetails.deaths==0){
+        if(this.props.casesDetails.total==0 && this.props.casesDetails.active==0 && this.props.casesDetails.recovered==0 && this.props.casesDetails.deaths==0 && this.props.errorDeatils==false)
+        {
             var spinner = (<Spinner/>)
         }
     
-         if(this.props.casesDetails.total!==0 && this.props.casesDetails.active!==0 && this.props.casesDetails.recovered!==0 && this.props.casesDetails.deaths!==0 ){
-                this.obj=this.props.casesDetails;
-                //console.log('props')
+        if(this.props.casesDetails.total!==0 && this.props.casesDetails.active!==0 && this.props.casesDetails.recovered!==0 && this.props.casesDetails.deaths!==0 )
+        {
+            this.obj=this.props.casesDetails;
             this.cases=[];     
-            for(let key in this.obj){
+            for(let key in this.obj)
+            {
                 var newObj={}
                 newObj[key]=this.obj[key];
                 this.cases.push(newObj);
             }
-            var caseData =   (this.cases.map(items=>{
-                for(let value in items){
-                    return(
-                        <Col className={styles.col} key={value}><Case key={value} label={value} details={items[value]}/></Col>
-                    );
-                }
-            })) 
+            
+            var caseData =(
+                this.cases.map(items=>{
+                    for(let value in items){
+                        return(
+                            <Col className={styles.col} key={value}><Case key={value} label={value} details={items[value]}/></Col>
+                        );
+                    }
+                })
+            ) 
         
         }
+        if(this.props.errorDeatils==true){
+            var error = <ErrorHandling />
+        }
         return(
-            <div className={styles.case}>
-                <Row >
-                    {spinner}
-                   {caseData} 
+           
+              
+                <div className={styles.case}>
+                <Row>
+                {spinner}
+                {caseData}
+                {error} 
                 </Row>
-            </div>
                 
            
-           
+        </div>
+        
+               
+            
         );
     }
-    
 }
 
 const mapStateToProps=(state)=>{
     return{
-        casesDetails:state.cas.cases
+        casesDetails:state.cas.cases,
+        errorDeatils:state.cas.caseError,
     }
 }
 

@@ -3,28 +3,29 @@ import styles from '../News/News.module.css';
 import {initNewsDetails} from '../../store/Actions/NewsActions';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-import Carousel from './Carousel/Carousel';
+import Carousel from '../../Components/Carousel/Carousel';
+import Spinner from '../../Components/UI/Spinner/Spinner';
+import Aux from '../../hoc/Aux/Aux';
+import ErrorHandling from '../../Components/ErrorHandling/ErrorHandling';
 
 class News extends PureComponent{
-    state={
-        loading:false
-    }
+    myInterval="";
     componentDidMount(){
         this.startRolling();
         this.props.onNewsDetails()
-        this.setState({...this.state,loading:true});
+        this.myInterval = setInterval(()=>{
+            this.props.onNewsDetails();
+        },600000)
     }
     state = {
         index: 0,
          handle: null
      }
-
-
  startRolling=()=> {
      const handle = setInterval(() => {
          let currentIndex = this.state.index + 1;
-         this.setState({index: currentIndex % 12 });
-     }, 2000);
+         this.setState({index: currentIndex % 9 });
+     }, 3000);
 
      this.setState({
          handle: handle
@@ -33,6 +34,7 @@ class News extends PureComponent{
 
  componentWillUnmount() {
      clearInterval(this.state.handle);
+     clearInterval(this.myInterval);
  }
 
  stopRolling=()=> {
@@ -45,30 +47,28 @@ class News extends PureComponent{
      })
  }
     render(){
-        if(this.state.loading==true){
-            if(this.props.length!=0){         
-               var array=(
-                this.props.news.map(items=>{
-                    return(
-                        <Carousel imageStyle={styles.Image1}
-                        image={items.urlToImage} alt="symptoms illustration"
-        heading={items.title}
-        route={items.url}
-        buttonText="Read More" 
-                        />
-                    );
-                })
-               )
-               var withIndex = array[this.state.index];
-            }
-        }
-            return (
-                <div className={styles.carousel} onMouseEnter={this.stopRolling} onMouseLeave={this.startRolling}>
-                <div className={styles.banner}>
-                    { withIndex}
-                </div>
-                <span className={styles.DotContainer}>
-                <Link to="/home" onClick={()=>this.setCurrentIndex(0)} className={styles.Dot + " " + (this.state.index == 0 ? styles.DotActive : '')}></Link>
+            if(this.props.news){
+                if(this.props.news.length==0 && this.props.newsError==false){
+                    var spinner = <Spinner/>
+                }
+                else if(this.props.length!=0){         
+                    var array=(
+                     this.props.news.map(items=>{
+                         return(
+                             <Carousel imageStyle={styles.Image1}
+                             image={items.urlToImage}
+             heading={items.title}
+             route={items.url}
+             buttonText="Read More" 
+                             />
+                         );
+                     })
+                    )
+                    var withIndex = array[this.state.index];
+
+                    var dots =(
+                        <Aux>
+                            <Link to="/home" onClick={()=>this.setCurrentIndex(0)} className={styles.Dot + " " + (this.state.index == 0 ? styles.DotActive : '')}></Link>
                 <Link to="/home" onClick={()=>this.setCurrentIndex(0)} className={styles.Dot + " " + (this.state.index == 1 ? styles.DotActive : '')}></Link>
                 <Link to="/home" onClick={()=>this.setCurrentIndex(0)} className={styles.Dot + " " + (this.state.index == 2 ? styles.DotActive : '')}></Link>
                 <Link to="/home" onClick={()=>this.setCurrentIndex(0)} className={styles.Dot + " " + (this.state.index == 3 ? styles.DotActive : '')}></Link>
@@ -77,10 +77,24 @@ class News extends PureComponent{
                 <Link to="/home" onClick={()=>this.setCurrentIndex(0)} className={styles.Dot + " " + (this.state.index == 6 ? styles.DotActive : '')}></Link>
                 <Link to="/home" onClick={()=>this.setCurrentIndex(0)} className={styles.Dot + " " + (this.state.index == 7 ? styles.DotActive : '')}></Link>
                 <Link to="/home" onClick={()=>this.setCurrentIndex(0)} className={styles.Dot + " " + (this.state.index == 8 ? styles.DotActive : '')}></Link>
-                <Link to="/home" onClick={()=>this.setCurrentIndex(0)} className={styles.Dot + " " + (this.state.index == 9 ? styles.DotActive : '')}></Link>
-                <Link to="/home" onClick={()=>this.setCurrentIndex(0)} className={styles.Dot + " " + (this.state.index == 10 ? styles.DotActive : '')}></Link>
-                <Link to="/home" onClick={()=>this.setCurrentIndex(0)} className={styles.Dot + " " + (this.state.index == 11 ? styles.DotActive : '')}></Link>
-                </span>
+                        </Aux>
+                    )
+                 }
+            }
+            if(this.props.newsError==true){
+                var error = <ErrorHandling/>
+            }
+            
+            return (
+            <div className={styles.carousel} onMouseEnter={this.stopRolling} onMouseLeave={this.startRolling}>
+                    {spinner}
+                    {error}
+                    <div className={styles.banner}>
+                        { withIndex}
+                    </div>
+                    <div className={styles.DotContainer}>
+                        {dots}
+                    </div>
             </div>
 
                 );
@@ -90,9 +104,9 @@ class News extends PureComponent{
 }
 
 const mapStateToProps=(state)=>{
-    //console.log('!!!!!!!!!***** graph news',state.newsR.news);
     return{
-        news:state.newsR.news
+        news:state.newsR.news,
+        newsError:state.newsR.newsError
     }
 }
 

@@ -1,10 +1,9 @@
 import React from 'react';
-import likes from '../../../assests/images/like.png';
-import view from '../../../assests/images/view.png';
-import styles from '../TweetItem/TweetItem.module.css';
+import likes from '../../assests/images/like.png';
+import view from '../../assests/images/view.png';
+import styles from './TweetItem.module.css';
 
 const TweetItem=(props)=>{
-    //<img className={styles.image} src={props.url}></img>
     return(
         <div className={styles.tweet}>
             <div className={styles.heading}>

@@ -1,22 +1,14 @@
 import * as actionTypes from '../Actions/ActionTypes';
 
 const initialState={
-   cases:{total:0,recovered:0,active:0,deaths:0}
+   cases:{total:0,recovered:0,active:0,deaths:0},
+   caseError:false,
 }
 
 const casesReducer=(state=initialState,action)=>{
-    //console.log('response reducer',action.details);
     switch(action.type){
         case actionTypes.CASE_DETAILS:
-            //console.log('case re',state.cases)
-            console.log('response reducer cases%%%%%%%%%%%',action.details);
             let details = action.details;
-            
-            //var destructure={...state,yo:{...state.cases}}
-            //console.log('parse',destructure.yo.total);
-            //console.log('des',destructure);
-            //console.log('case',state);
-            //console.log('details',details);
             return{
                ...state,
                cases:{...state.cases,
@@ -24,8 +16,14 @@ const casesReducer=(state=initialState,action)=>{
             active:details.total_active_cases,
         recovered:details.total_recovered,
     deaths:details.total_deaths,
-    },    
+               },
             }
+            case actionTypes.FETCH_CASE_ERRORS:
+                return{
+                    ...state,
+                    caseError:true,
+                }
+
     }
     return state;
 }

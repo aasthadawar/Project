@@ -30,4 +30,7 @@ body {
 input{
   outline:none!important;
 }
+.body{
+overflow-x: hidden!important;
+}
 

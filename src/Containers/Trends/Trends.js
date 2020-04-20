@@ -1,43 +1,51 @@
 import React, { PureComponent } from 'react';
 import styles from './Trends.module.css';
 import TrendsLinks from '../../Components/UI/TrendsLinks/TrendsLinks';
-
-import {NavLink,Switch} from 'react-router-dom';
-
+import {Switch} from 'react-router-dom';
 import {Route} from 'react-router-dom';
-import ConfirmGraph from '../Trends/ConfirmGraph/ConfirmGraph';
-import DeathGraph from '../Trends/DeathGraph/DeathGraph';
-import RecoveredGraph from '../Trends/RecoveredGraph/RecoveredGraph';
+import ConfirmGraph from '../../Components/ConfirmGraph/ConfirmGraph';
+import DeathGraph from '../../Components/DeathGraph/DeathGraph';
+import RecoveredGraph from '../../Components/RecoveredGraph/RecoveredGraph';
 import Spinner from '../../Components/UI/Spinner/Spinner';
 import Aux from '../../hoc/Aux/Aux';
 import {initGraphDetails} from '../../store/Actions/GraphActions';
 import {connect} from 'react-redux';
-
+import ErrorHandling from '../../Components/ErrorHandling/ErrorHandling';
 
 class Trends extends PureComponent{
+    myInterval='';;
     componentDidMount(){
         this.props.onGraphDetails();
+        this.myInterval = setInterval(()=>{
+            this.props.onGraphDetails();
+        },600000)
+    }
+    componentWillUnmount(){
+        clearInterval(this.myInterval);
     }
 
     render(){
         if(this.props.graphDetails){
-            if(this.props.graphDetails.length==0){
+            if(this.props.graphDetails.length==0 && this.props.graphError==false){
             var spinner = (<Spinner/>);}
             else if(this.props.graphDetails.length!=0){
                 var links = (
                     <Aux>
-                   <NavLink exact activeClassName={styles.active} to="/home">Confirmed</NavLink>
-                        <NavLink exact activeClassName={styles.active} to="/home/recovered">Recovered</NavLink>
-                       <NavLink exact activeClassName={styles.active} to="/home/death">Deceased</NavLink>
+                        <TrendsLinks/>
                     </Aux>
                 )
+                var heading = (<p className={styles.Label}>Spread Trends</p>)
             }
+        }
+        if(this.props.graphError==true){
+            var error = <ErrorHandling/>
         }
         return(
             <div className={styles.trend}>
                 {spinner}
+                {error}
                 <div className={styles.LabelFlex}>
-                    <p className={styles.Label}>Spread Trends</p>
+                    {heading}
                     <div className={styles.MainLink}>
                         {links}
                     </div>
@@ -57,9 +65,9 @@ class Trends extends PureComponent{
 
 
 const mapStateToProps=(state)=>{
-    console.log('!!!!!!!!!!state',state.graph.graphCases);
     return{
-        graphDetails:state.graph.graphCases
+        graphDetails:state.graph.graphCases,
+        graphError:state.graph.graphError
     }
 }
 

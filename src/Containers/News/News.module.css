@@ -1,37 +1,18 @@
-.Image1 {
-    margin-right: 15px;
-}
-
-.Image2 {
-    height: 160px;
-    width: 160px;
-    border-radius: 50%;
-    margin-right: 15px;
-}
-
-.Image3 {
-    height: 160px;
-    width: 160px;
-    border-radius: 50%;
-    margin-right: 15px;
-}
 
 .carousel {
+   display: flex;
+   flex-direction: column;
     background-color: #fff;
     box-sizing: border-box;
     border-radius: 8px;
-    text-align: left;
-    padding:15px;
+    padding:10px;
     margin:10px;
-    height: 270px;
+    height: 290px;
 }
 
 .DotContainer {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
     text-align: center;
+    
 }
 
 .Dot {
@@ -47,4 +28,15 @@
     height: 13px;
     width: 13px;
     background-color: #ff0019;
+}
+
+.banner{
+    height: 250px;
+}
+
+@media (min-width:768px) and (max-width:992){
+    .carousel{
+        height: 320px;
+    }
+    
 }

@@ -1,28 +1,26 @@
 import * as actionTypes from '../Actions/ActionTypes';
 
-
 const initialState = {
-    countries:[]
+    countries:[],
+    countryError:false
 }
-
-
 
 const CountriesReducer=(state=initialState,action)=>{
     switch(action.type){
         case actionTypes.COUNTRIES_DETAILS:
-            //console.log('country',state.countries);
-            console.log('reducer country',action.details);
             var updatedArray=[];
             var countryArray=[];
             let details=action.details;
-             countryArray=updatedArray.concat(details);
-            //console.log('updated',updatedArray);
+            countryArray=updatedArray.concat(details);
             return{
                 ...state,
                 countries:countryArray
-                
             }
-        
+        case actionTypes.FETCH_COUNTRY_ERRORS:
+            return{
+                ...state,
+                countryError:true,
+            }    
     }
     return state;
 }

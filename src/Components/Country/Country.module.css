@@ -3,12 +3,14 @@
     width:20%;
 }
 .Country{
+    display: flex;
     box-shadow: 0px 5px 20px #1425401A;
 border-radius: 8px;
 background: #FFFFFF;
 display:flex;
 padding:10px;
 margin:10px 0px;
+justify-content: space-between;
 }
 
 ul{
@@ -55,4 +57,51 @@ padding-left:10px;
     font-size: 12px;
     margin-top: 10px;
     font-weight: bold;
+}
+
+@media (min-width:500px) and (max-width:700px){
+    .CountryImage{
+        height:40px;
+        width:20%;
+    }
+    .Flex{
+        align-items: center;
+        font-size: 18px;
+    }
+    .recover{
+        font-size: 16px;
+    }
+    .active{
+        font-size: 16px;
+    }
+}
+
+@media (min-width:701px) and (max-width:992px){
+    .CountryImage{
+        height:60px;
+        width:20%;
+    }
+    .Flex{
+        align-items: center;
+        font-size: 24px;
+    }
+    .recover{
+        font-size: 20px;
+    }
+    .active{
+        font-size: 20px;
+    }
+}
+
+@media (min-width:992px) and (max-width:1050px){
+    .Flex{
+        align-items: center;
+        font-size: 16px;
+    }
+    .recover{
+        font-size: 10px;
+    }
+    .active{
+        font-size: 10px;
+    }
 }
