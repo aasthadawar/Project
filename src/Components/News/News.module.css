@@ -1,0 +1,42 @@
+
+.carousel {
+   display: flex;
+   flex-direction: column;
+    background-color: #fff;
+    box-sizing: border-box;
+    border-radius: 8px;
+    padding:10px;
+    margin:10px;
+    height: 290px;
+}
+
+.DotContainer {
+    text-align: center;
+    
+}
+
+.Dot {
+    height: 10px;
+    width: 10px;
+    margin: 0 5px;
+    background-color: #f6e1e2;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.DotActive {
+    height: 13px;
+    width: 13px;
+    background-color: #ff0019;
+}
+
+.banner{
+    height: 250px;
+}
+
+@media (min-width:768px) and (max-width:992){
+    .carousel{
+        height: 320px;
+    }
+    
+}

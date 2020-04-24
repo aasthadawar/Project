@@ -1,0 +1,36 @@
+body {
+  margin: 10px auto;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.jvectormap-zoomin, .jvectormap-zoomout, .jvectormap-goback {
+  position: absolute;
+  left:unset!important;
+  right:20px!important;
+}
+
+.CircularProgressbar .CircularProgressbar-path {
+  stroke: green!important;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.5s ease 0s;
+}
+
+.body{
+  overflow-x: hidden;
+}
+
+.CircularProgressbar .CircularProgressbar-text {
+  fill: black!important;
+}
+
+input{
+  outline:none!important;
+}
+.body{
+overflow-x: hidden!important;
+}
+

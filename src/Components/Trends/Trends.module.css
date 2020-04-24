@@ -1,0 +1,114 @@
+.LabelFlex{
+    display:flex;
+    justify-content: space-between;
+    padding:15px;
+    align-items: center;
+}
+
+.LabelFlex a{
+    text-decoration: none;
+    font-size: 14px;
+    padding:10px;
+    font: Medium 12px/15px Montserrat;
+    color: #30313A;
+}
+
+.LabelFlex a:hover{
+    text-decoration: none;
+    color: white;
+    background: #52586A ;
+    border-radius: 8px;
+}
+
+.NavItem{
+    font: Medium 12px/15px Montserrat;
+    color: #30313A;
+    padding:10px;
+}
+
+
+.Label{
+    font-weight: bold;
+    font: SemiBold 18px/22px Montserrat;
+color: #30313A;
+}
+
+
+.route{
+    display:flex;
+}
+
+.caseDetails{
+    width:20px;
+}
+
+.trend{
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+box-shadow: 0px 5px 20px #1425401A;
+border-radius: 8px;
+padding:10px;
+margin:10px;
+margin-left:20px;
+}
+
+.MainLink{
+    background-color: #F5F5F5;
+    display: flex;
+    border-radius: 8px;
+}
+
+
+.button1{
+    border: none;
+    background-color: transparent;
+    padding-left:0px!important;
+    padding-right: 0px!important;
+ }
+
+.button1 a{
+    padding: 15px;
+}
+
+.button{
+   border: none;
+   padding: 10px;
+}
+
+.button:hover{
+    background: #52586A ;
+    border-radius: 8px;
+    color:white!important;
+    outline: none;
+}
+
+.button:active{
+    background: #52586A ;
+    border-radius: 8px;
+    color:white!important;
+}
+
+@media (max-width:992px){
+    .trend{
+        margin-left: 10px;
+    }
+}
+
+@media (max-width:450px){
+    .LabelFlex{
+        flex-direction: column;
+    }
+    .Label{
+        font-size:20px;
+        margin-bottom: 0.5rem!important;
+    }
+}
+
+@media (min-width:768) and (max-width:992px){
+    .LabelFlex{
+        flex-direction: column;
+    }
+    .Label{
+        font-size:18pxpx;
+    }
+    
+}

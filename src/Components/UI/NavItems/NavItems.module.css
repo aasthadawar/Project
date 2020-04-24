@@ -1,0 +1,33 @@
+.NavItems {
+    padding:10px;
+    color:black;
+    box-sizing: border-box;
+    padding-bottom:10px;
+    padding-left:20px;
+    padding-right:20px;
+}
+
+.main a:hover{
+    text-decoration: none;
+    color:red;
+}
+
+.active{
+    color:red;
+    border-bottom: 3px solid red;
+}
+
+.NavItems a:hover{
+    color: green;
+}
+
+.main{
+    display: flex;
+    align-items: center;
+}
+
+@media (min-width:320px) and (max-width:576px){
+    .main{
+        justify-content: center;
+    }
+}

@@ -1,0 +1,49 @@
+.Case{
+    display:flex;
+background: #FFFFFF 0% 0% no-repeat padding-box;
+box-shadow: 0px 5px 20px #1425401A;
+border-radius: 8px;
+padding:20px 0px;
+padding:20px 10px;
+box-sizing: border-box;
+margin-right: 20px;
+width: 25%;
+}
+.image{
+    height:10px;
+    width:14px;
+}
+.Labels{
+    text-align: left;
+font: Medium 14px/18px Montserrat;
+color: #52586A;
+font-size: 14px;
+}
+
+.Details{
+    text-align: left;
+font: SemiBold 24px/29px Montserrat;
+color: #30313A;
+margin-bottom: 0px;
+font-weight: bold;
+padding-top:10px;
+}
+
+.sub{
+    padding-left: 10px;
+}
+
+@media  (min-width:300px) and (max-width:450px){
+    .Case{
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+@media  (min-width:450px) and (max-width:730px){
+    .Case{
+        width: calc(50% - 10px);
+        box-sizing: border-box;
+        margin-bottom: 10px;
+    }
+}

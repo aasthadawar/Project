@@ -1,0 +1,19 @@
+{
+    "results": [
+       {
+          "total_cases": 2710070,
+          "total_recovered": 742255,
+          "total_unresolved": 1696495,
+          "total_deaths": 190098,
+          "total_new_cases_today": 78285,
+          "total_new_deaths_today": 6032,
+          "total_active_cases": 1777717,
+          "total_serious_cases": 58675,
+          "total_affected_countries": 210,
+          "source": {
+             "url": "https://thevirustracker.com/"
+          }
+       }
+    ],
+    "stat": "ok"
+ }

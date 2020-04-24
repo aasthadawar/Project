@@ -1,0 +1,42 @@
+
+
+.case{
+    margin:10px;
+    margin-top:20px;
+    margin-left: 20px;
+}
+
+.flex{
+    display: flex;
+}
+
+.flex div:last-child{
+    margin-right: 0px;
+}
+
+
+@media  (min-width:300px) and (max-width:450px){
+    .flex{
+        flex-direction: column;
+    }
+    .flex div:last-child{
+        margin-bottom: 0px;
+    }
+    .case{
+        margin-left: 10px;
+        margin-top: 10px;
+        margin-bottom: 0px;
+    }
+}
+
+@media  (min-width:450px) and (max-width:730px){
+    .flex{
+        flex-wrap: wrap;
+    }
+    .flex div:nth-child(2){
+        margin-right: 0px;
+    }
+}
+
+
+
